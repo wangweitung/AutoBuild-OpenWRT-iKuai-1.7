@@ -11,6 +11,8 @@
 
 安装的插件
 
+luci-app-adguardhome
+
 luci-app-ssr-plus
 
 luci-app-accesscontrol
@@ -32,7 +34,7 @@ luci-app-nlbwmon
 
 管理ip
 
-http://10.1.1.5
+http://10.1.1.7
 
 
 
