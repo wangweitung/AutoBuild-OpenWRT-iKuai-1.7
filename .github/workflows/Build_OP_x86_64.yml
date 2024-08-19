@@ -25,19 +25,19 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
 
-    - name: 释放磁盘空间
-      uses: jlumbroso/free-disk-space@main
-      with:
-        # this might remove tools that are actually needed,
-        # if set to "true" but frees about 6 GB
-        tool-cache: true
-        # all of these default to true, but feel free to set to
-        # "false" if necessary for your workflow
-        android: true
-        dotnet: true
-        haskell: true
-        large-packages: true
-        swap-storage: true
+    #- name: 释放磁盘空间
+    #  uses: jlumbroso/free-disk-space@main
+    #  with:
+    #    # this might remove tools that are actually needed,
+    #    # if set to "true" but frees about 6 GB
+    #    tool-cache: true
+    #    # all of these default to true, but feel free to set to
+    #    # "false" if necessary for your workflow
+    #    android: true
+    #    dotnet: true
+    ##    haskell: true
+    #    large-packages: true
+    #    swap-storage: true
 
     - name: Initialization environment
       env:
@@ -85,7 +85,6 @@ jobs:
       run: |
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        ./scripts/feeds install -a
         rm -rf feeds/packages/lang/golang
         git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
@@ -126,10 +125,6 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: OpenWrt
-      #  path: openwrt/bin
-      #  path: openwrt/bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.img.gz
-      #  path: openwrt/bin/targets/x86/64
-      #  path: openwrt/bin/targets/x86/64
         path: |
           openwrt/bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.img
           openwrt/bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.vmdk
